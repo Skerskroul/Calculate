@@ -4,18 +4,17 @@
     /// Model - бизнес логика
     /// Business layer
     /// </summary>
-    class MathModel
+    class Model
     {
         private string firstArgument;
         private string operation;
         private string secongArgument;
         
-
         /// <summary>
         /// UA. Конструктор
         /// ENG. Just ctor
         /// </summary>
-        public MathModel()
+        public Model()
         {
             firstArgument = secongArgument = operation = "";
         }

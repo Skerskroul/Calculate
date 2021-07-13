@@ -6,11 +6,11 @@
     /// </summary>
     class ViewModel
     {
-        private readonly MathModel mathModel;
+        private readonly Model mathModel;
 
         public ViewModel()
         {
-            mathModel = new MathModel();
+            mathModel = new Model();
         }
         /// <summary>
         /// UA. Отримує аргументи з View. В подальшому буде мінятися.
@@ -30,6 +30,5 @@
         {
             mathModel.Clean();
         }
-
     }
 }

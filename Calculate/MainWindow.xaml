@@ -37,39 +37,39 @@
             <TextBox x:Name="textBox" Text="text" Grid.ColumnSpan="2" Margin="10 10 10 10" Width="171" HorizontalAlignment="Left"></TextBox>
 
             <Canvas Grid.Row="1">
-                <Button x:Name="memoryClear" Content="MC" Margin="10 0 0 10" Canvas.Top="10" Height="25" Width="30" Click="memoryClear_Click"></Button>
-                <Button x:Name="memoryRead" Content="MR" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="35" Height="25" Width="30" Click="memoryRead_Click"></Button>
-                <Button x:Name="memorySave" Content="MS" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="70" Height="25" Width="30" Click="memorySave_Click"></Button>
-                <Button x:Name="memoryAdd" Content="M+" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="105" Height="25" Width="30" Click="memoryAdd_Click"></Button>
-                <Button x:Name="memoryDifference" Content="M-" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="140" Height="25" Width="30" Click="memoryDifference_Click"></Button>
+                <Button x:Name="memoryClear" Content="MC" Margin="10 0 0 10" Canvas.Top="10" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="memoryRead" Content="MR" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="35" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="memorySave" Content="MS" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="memoryAdd" Content="M+" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="memoryDifference" Content="M-" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="140" Height="25" Width="30" Click="SendArguments"></Button>
 
-                <Button x:Name="backspace" Content="back" Margin="10 0 0 10" Canvas.Top="40" Height="25" Width="30" Click="backspace_Click"></Button>
-                <Button x:Name="clearLast" Content="CE" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="35" Height="25" Width="30" Click="clearLast_Click"></Button>
-                <Button x:Name="clearAll" Content="C" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="70" Height="25" Width="30" Click="clearAll_Click"></Button>
-                <Button x:Name="changeSign" Content="+-" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="105" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="koren" Content="Kor" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="140" Height="25" Width="30" Click="koren_Click"></Button>
+                <Button x:Name="backspace" Content="back" Margin="10 0 0 10" Canvas.Top="40" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="clearLast" Content="CE" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="35" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="clearAll" Content="C" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="changeSign" Content="+-" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="koren" Content="Kor" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="140" Height="25" Width="30" Click="SendArguments"></Button>
 
-                <Button x:Name="seven" Content="7" Margin="10 0 0 10" Canvas.Top="70" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="eight" Content="8" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="35" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="nine" Content="9" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="70" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="division" Content="/" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="105" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="perCent" Content="%" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="140" Height="25" Width="30" Click="perCent_Click"></Button>
+                <Button x:Name="seven" Content="7" Margin="10 0 0 10" Canvas.Top="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="eight" Content="8" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="35" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="nine" Content="9" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="division" Content="/" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="perCent" Content="%" Margin="10 0 0 10" Canvas.Top="70" Canvas.Left="140" Height="25" Width="30" Click="SendArguments"></Button>
 
-                <Button x:Name="four" Content="4" Margin="10 0 0 10" Canvas.Top="100" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="fife" Content="5" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="35" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="six" Content="6" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="70" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="product" Content="*" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="105" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="DivisionX" Content="1/X" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="140" Height="25" Width="30" Click="DivisionX_Click"></Button>
+                <Button x:Name="four" Content="4" Margin="10 0 0 10" Canvas.Top="100" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="fife" Content="5" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="35" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="six" Content="6" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="product" Content="*" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="DivisionX" Content="1/X" Margin="10 0 0 10" Canvas.Top="100" Canvas.Left="140" Height="25" Width="30" Click="SendArguments"></Button>
 
-                <Button x:Name="one" Content="1" Margin="10 0 0 10" Canvas.Top="130" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="two" Content="2" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="35" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="three" Content="3" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="70" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="minus" Content="-" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="105" Height="25" Width="30" Click="Add_Number"></Button>
-                <Button x:Name="total" Content="=" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="140" Height="55" Width="30" Click="total_Click"></Button>
+                <Button x:Name="one" Content="1" Margin="10 0 0 10" Canvas.Top="130" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="two" Content="2" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="35" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="three" Content="3" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="minus" Content="-" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="total" Content="=" Margin="10 0 0 10" Canvas.Top="130" Canvas.Left="140" Height="55" Width="30" Click="SendArguments"></Button>
 
-                <Button x:Name="null" Content="0" Margin="10 0 0 10" Canvas.Top="160" Height="25" Width="65" Click="Add_Number"></Button>
-                <Button x:Name="point" Content="," Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="70" Height="25" Width="30" Click="point_Click"></Button>
-                <Button x:Name="plus" Content="+" Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="105" Height="25" Width="30" Click="Add_Number"></Button>
+                <Button x:Name="null" Content="0" Margin="10 0 0 10" Canvas.Top="160" Height="25" Width="65" Click="SendArguments"></Button>
+                <Button x:Name="point" Content="," Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="70" Height="25" Width="30" Click="SendArguments"></Button>
+                <Button x:Name="plus" Content="+" Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="105" Height="25" Width="30" Click="SendArguments"></Button>
             </Canvas>
             
         </Grid>
