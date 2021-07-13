@@ -23,7 +23,8 @@
             return mathModel.Parse(argument);
         }
         /// <summary>
-        /// 
+        /// UA.  Для очищення всіх даних
+        /// END. For clean date
         /// </summary>
         public void CleanAll()
         {
