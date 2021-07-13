@@ -52,7 +52,11 @@ namespace Calculate
         {
 
         }
-
+        /// <summary>
+        /// Call clear all
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clearAll_Click(object sender, RoutedEventArgs e)
         {
             textBox.Text = "0";
