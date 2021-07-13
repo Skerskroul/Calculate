@@ -36,7 +36,7 @@
                     if (firstArgument != "")
                         operation = number;
                 }
-                else if (number == "-_")
+                else if (number == "+-")
                 {
                     double.TryParse(firstArgument, out temp);
                     firstArgument = (-temp).ToString();
@@ -55,7 +55,7 @@
                         Calculate();
                     operation = number;
                 }
-                else if(number == "-_")
+                else if(number == "+-")
                 {
                     double.TryParse(secongArgument, out temp);
                     secongArgument = (-temp).ToString();
