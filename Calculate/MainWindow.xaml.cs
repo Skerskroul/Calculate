@@ -5,6 +5,7 @@ namespace Calculate
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
+    /// View
     /// </summary>
     public partial class MainWindow : Window
     {
