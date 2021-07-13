@@ -1,0 +1,15 @@
+D:\БольшеПрактики\WPF\Calculate\Calculate\bin\Debug\Calculate.exe.config
+D:\БольшеПрактики\WPF\Calculate\Calculate\bin\Debug\Calculate.exe
+D:\БольшеПрактики\WPF\Calculate\Calculate\bin\Debug\Calculate.pdb
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.csprojAssemblyReference.cache
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\MainWindow.g.cs
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\App.g.cs
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate_MarkupCompile.cache
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate_MarkupCompile.lref
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\MainWindow.baml
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.g.resources
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.Properties.Resources.resources
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.csproj.GenerateResource.cache
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.csproj.CoreCompileInputs.cache
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.exe
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.pdb
