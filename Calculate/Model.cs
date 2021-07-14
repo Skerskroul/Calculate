@@ -1,4 +1,8 @@
-﻿namespace Calculate
+﻿using System.Windows.Data;
+using System;
+using System.ComponentModel;
+
+namespace Calculate
 {
     /// <summary>
     /// Model - бизнес логика
@@ -9,7 +13,8 @@
         private string firstArgument;
         private string operation;
         private string secongArgument;
-        
+
+
         /// <summary>
         /// UA. Конструктор
         /// ENG. Just ctor

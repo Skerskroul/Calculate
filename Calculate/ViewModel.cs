@@ -1,34 +1,43 @@
-﻿namespace Calculate
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
+
+namespace Calculate
 {
     /// <summary>
     /// организовывает взаимосвязь с View и Model
     /// organization connect with View and ViewModel
     /// </summary>
-    class ViewModel
+    class ViewModel : INotifyPropertyChanged
     {
-        private readonly Model mathModel;
+        private string result = "0";
+        private Model model = new Model();
 
-        public ViewModel()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            mathModel = new Model();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        /// <summary>
-        /// UA. Отримує аргументи з View. В подальшому буде мінятися.
-        /// ENG. Take argument from View. It will be modificate in the future.
-        /// </summary>
-        /// <param name="argument"></param>
-        /// <returns></returns>
-        public string TakeArgument(string argument)
+
+        public string Result
         {
-            return mathModel.Parse(argument);
+            get { return result; }
+            set
+            {
+                result = value;
+                OnPropertyChanged();
+            }
         }
-        /// <summary>
-        /// UA.  Для очищення всіх даних
-        /// END. For clean date
-        /// </summary>
-        public void CleanAll()
+
+        public ICommand ClickButton
         {
-            mathModel.Clean();
+            get
+            {
+                return new RelayCommand((obj) =>
+                    {
+                        Result = model.Parse(obj.ToString());
+                    });
+            }
         }
     }
 }

@@ -13,3 +13,4 @@ D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.cspr
 D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.csproj.CoreCompileInputs.cache
 D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.exe
 D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\Calculate.pdb
+D:\БольшеПрактики\WPF\Calculate\Calculate\obj\Debug\GeneratedInternalTypeHelper.g.cs
