@@ -19,7 +19,8 @@ In future this struct modificate if need it.
            problem with pattern MVVM and my skills in programming. I need more time to understand how construct project in this pattern and 
            to improve my skills in programing.
            
-           
+14.07.2021 OMG. I remaked project struct. I watched a lot of video. And some(body;) video helpful, but i still did not understand.
+           Finally i do this. Good "bad" commit.
            
            
            
