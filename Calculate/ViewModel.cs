@@ -35,9 +35,10 @@ namespace Calculate
             {
                 return new RelayCommand((obj) =>
                     {
-                        Result = model.Parse(obj.ToString());
+                        Result = model.DoSomething(obj.ToString());
                     });
             }
         }
+
     }
 }

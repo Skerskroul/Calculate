@@ -1,8 +1,4 @@
-﻿using System.Windows.Data;
-using System;
-using System.ComponentModel;
-
-namespace Calculate
+﻿namespace Calculate
 {
     /// <summary>
     /// Model - бизнес логика
@@ -10,18 +6,17 @@ namespace Calculate
     /// </summary>
     class Model
     {
-        private string firstArgument;
+        private Number firstArgument;
         private string operation;
-        private string secongArgument;
+        private Number secondArgument;
 
-
-        /// <summary>
-        /// UA. Конструктор
-        /// ENG. Just ctor
-        /// </summary>
         public Model()
         {
-            firstArgument = secongArgument = operation = "";
+            firstArgument = new Number();
+            secondArgument = new Number();
+            firstArgument.Clear();
+            secondArgument.Clear();
+            operation = "";
         }
         /// <summary>
         /// UA. Mетод для коректного парсингу даних. Проблема функція бере багато на себе обов'язків
@@ -29,50 +24,62 @@ namespace Calculate
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
-        public string Parse(string number)
+        public string DoSomething(string symbol)
         {
-            double temp;
+            if (!ParseNumber(symbol))
+                //if(!OperationWithNumber(symbol))
+                    ParseOperation(symbol);
 
-            if(operation == "")
-            {
-                if (number == "+" || number == "-" || number == "*" || number == "/")
-                {
-                    if (firstArgument != "")
-                        operation = number;
-                }
-                else if (number == "+-")
-                {
-                    double.TryParse(firstArgument, out temp);
-                    firstArgument = (-temp).ToString();
-                }
-                else
-                {
-                    if (double.TryParse(firstArgument + number, out temp))
-                        firstArgument = temp.ToString();
-                }
-            }
-            else if(operation != "")
-            {
-                if (number == "+" || number == "-" || number == "*" || number == "/")
-                {
-                    if(secongArgument != "")
-                        Calculate();
-                    operation = number;
-                }
-                else if(number == "+-")
-                {
-                    double.TryParse(secongArgument, out temp);
-                    secongArgument = (-temp).ToString();
-                }
-                else
-                {
-                    if (double.TryParse(secongArgument + number, out temp))
-                        secongArgument = temp.ToString();
-                }
-            }
+
 
             return CreateResult();
         }
+
+        private bool ParseNumber(string symbol)
+        {
+            if (operation == "" && firstArgument.AddSymbol(symbol))
+                return true;
+            else if (operation != "" && secondArgument.AddSymbol(symbol))
+                return true;
+            return false;
+        }
+
+        private void ParseOperation(string symbol)
+        {
+            if (symbol == "=")
+                Calculate();
+            else if (symbol != "=" && operation == "")
+                operation = symbol;
+            else if (symbol != "=" && operation != "" && secondArgument.ToString() == "")
+                operation = symbol;
+            else if(symbol != "=" && operation != "" && secondArgument.ToString() != "")
+            {
+                Calculate();
+                operation = symbol;
+            }
+        }
+
+        //private bool OperationWithNumber(string symbol)
+        //{
+        //    //if (secondArgument.ToString() != "")
+        //        //return NumberOperation(ref secondArgument, symbol);
+        //    //else if (firstArgument.ToString() != "")
+        //        //return NumberOperation(ref firstArgument, symbol);
+        //    return false;
+        //}
+
+        //private bool NumberOperation(ref Number number, string symbol)
+        //{
+        //    switch (symbol)
+        //    {
+        //        case "+/-":
+        //            {
+        //                return number.ResetSign();
+        //            }
+        //    }
+        //    return false;
+        //}
+
         /// <summary>
         /// UA. Створює рядок який повертаеться, як аргумент за посиланням
         /// ENG. Create string which return as an arguments to the link
@@ -81,11 +88,11 @@ namespace Calculate
         private string CreateResult()
         {
             string result;
-            result = firstArgument;
+            result = firstArgument.ToString();
             if (operation != "")
                 result += " " + operation;
-            if(secongArgument != "")
-                result += " " + secongArgument;
+            if( secondArgument.ToString() != "")
+                result += " " + secondArgument.ToString();
 
             return result;
         }
@@ -95,38 +102,45 @@ namespace Calculate
         /// </summary>
         private void Calculate()
         {
-            switch(operation)
+            double first, second;
+            double.TryParse(firstArgument.ToString(), out first);
+            double.TryParse(secondArgument.ToString(), out second);
+
+            switch (operation)
             {
                 case "+":
                     {
-                        firstArgument = (double.Parse(firstArgument) + double.Parse(secongArgument)).ToString();
-                        secongArgument = operation = "";
+                        firstArgument.SetNumber((first + second).ToString());
                         break;
                     }
                 case "-":
                     {
-                        firstArgument = (double.Parse(firstArgument) - double.Parse(secongArgument)).ToString();
-                        secongArgument = operation = "";
+                        firstArgument.SetNumber((first - second).ToString());
                         break;
                     }
                 case "*":
                     {
-                        firstArgument = (double.Parse(firstArgument) * double.Parse(secongArgument)).ToString();
-                        secongArgument = operation = "";
+                        firstArgument.SetNumber((first * second).ToString());
                         break;
                     }
                 case "/":
                     {
-                        firstArgument = (double.Parse(firstArgument) / double.Parse(secongArgument)).ToString();
-                        secongArgument = operation = "";
+                        firstArgument.SetNumber((first / second).ToString());
+                        break;
+                    }
+                default:
+                    {
+                        firstArgument.SetNumber((first).ToString());
                         break;
                     }
             }
+            secondArgument.Clear();
+            operation = "";
         }
 
         public void Clean()
         {
-            firstArgument = operation = secongArgument = "";
+
         }
     }
 }
