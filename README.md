@@ -24,7 +24,8 @@ In future this struct modificate if need it.
            
 15.07.2021 Commit stable version. Version can counted with operation + - * /. And can calc float number.
 
-16.07.2021 Added all function for correct calculate. 
+16.07.2021 Added all function for correct calculate.
+           5:20 PM release stable version program.
            
            
 P.S. Sorry for my english.
