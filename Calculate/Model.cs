@@ -27,10 +27,7 @@
         public string DoSomething(string symbol)
         {
             if (!ParseNumber(symbol))
-                //if(!OperationWithNumber(symbol))
-                    ParseOperation(symbol);
-
-
+                ParseOperation(symbol);
 
             return CreateResult();
         }
@@ -46,39 +43,14 @@
 
         private void ParseOperation(string symbol)
         {
-            if (symbol == "=")
-                Calculate();
-            else if (symbol != "=" && operation == "")
-                operation = symbol;
-            else if (symbol != "=" && operation != "" && secondArgument.ToString() == "")
-                operation = symbol;
-            else if(symbol != "=" && operation != "" && secondArgument.ToString() != "")
-            {
-                Calculate();
-                operation = symbol;
-            }
+            if (UnaryCalculate(symbol))//+/-, kor, 1/x
+                return;
+            else if (UnaryCalculateWithTwoArgument(symbol))//%
+                return;
+            else if (CalculateBinaryOperation(symbol))
+                return;
+            
         }
-
-        //private bool OperationWithNumber(string symbol)
-        //{
-        //    //if (secondArgument.ToString() != "")
-        //        //return NumberOperation(ref secondArgument, symbol);
-        //    //else if (firstArgument.ToString() != "")
-        //        //return NumberOperation(ref firstArgument, symbol);
-        //    return false;
-        //}
-
-        //private bool NumberOperation(ref Number number, string symbol)
-        //{
-        //    switch (symbol)
-        //    {
-        //        case "+/-":
-        //            {
-        //                return number.ResetSign();
-        //            }
-        //    }
-        //    return false;
-        //}
 
         /// <summary>
         /// UA. Створює рядок який повертаеться, як аргумент за посиланням
@@ -100,42 +72,86 @@
         /// UA. Проводить розрахунки в залежності від знаку 
         /// ENG. Do calculate. Information comments from Junior ;D
         /// </summary>
-        private void Calculate()
+        private bool BinaryCalculate()
         {
+            ListBinaryOperation listBinaryOperation = new ListBinaryOperation();
+            ICalcBinary calcBinary = null;
             double first, second;
+
             double.TryParse(firstArgument.ToString(), out first);
             double.TryParse(secondArgument.ToString(), out second);
 
-            switch (operation)
+            if (listBinaryOperation.CheckOperation(operation, out calcBinary))
             {
-                case "+":
-                    {
-                        firstArgument.SetNumber((first + second).ToString());
-                        break;
-                    }
-                case "-":
-                    {
-                        firstArgument.SetNumber((first - second).ToString());
-                        break;
-                    }
-                case "*":
-                    {
-                        firstArgument.SetNumber((first * second).ToString());
-                        break;
-                    }
-                case "/":
-                    {
-                        firstArgument.SetNumber((first / second).ToString());
-                        break;
-                    }
-                default:
-                    {
-                        firstArgument.SetNumber((first).ToString());
-                        break;
-                    }
+                firstArgument.SetNumber(calcBinary.Calc(first, second).ToString());
+                secondArgument.Clear();
+                operation = "";
+                return true;
             }
-            secondArgument.Clear();
-            operation = "";
+            return false;
+        }
+
+        private bool UnaryCalculate(string symbol)
+        {
+            ListUnaryOperation listUnaryOperation = new ListUnaryOperation();
+            ICalcUnary calcUnary = null;
+            double first;
+
+            if (listUnaryOperation.CheckOperation(symbol, out calcUnary))
+            {
+                Number temp = WhatOperand();
+
+                double.TryParse(temp.ToString(), out first);
+
+                temp.SetNumber(calcUnary.Calc(first).ToString());
+
+                return true;
+            }
+            return false;
+        }
+
+        private bool UnaryCalculateWithTwoArgument(string symbol)
+        {
+            ListUnaryOperationWithTwoArgument listUnaryOperationWithTwoArgument = new ListUnaryOperationWithTwoArgument();
+            ICalcUnaryWithTwoArgument calcUnaryWithTwoArgument = null;
+            double first, second;
+
+            double.TryParse(firstArgument.ToString(), out first);
+            double.TryParse(secondArgument.ToString(), out second);
+
+            if(listUnaryOperationWithTwoArgument.CheckOperation(symbol, out calcUnaryWithTwoArgument))
+            {
+                Number temp = WhatOperand();
+
+                temp.SetNumber(calcUnaryWithTwoArgument.Calc(first, second).ToString());
+
+                return true;
+            }
+            return false;
+        }
+
+        private bool CalculateBinaryOperation(string symbol)
+        {
+            bool result = false;
+
+            if (symbol == "=")//total
+                result = BinaryCalculate();
+            else if ((symbol != "=" && operation == "") || (symbol != "=" && operation != "" && secondArgument.ToString() == ""))//
+                operation = symbol;
+            else if (symbol != "=" && operation != "" && secondArgument.ToString() != "")//
+            {
+                result = BinaryCalculate();
+                operation = symbol;
+            }
+            return result;
+        }
+
+        private Number WhatOperand()
+        {
+            if (secondArgument.ToString() != "")
+                return secondArgument;
+            else
+                return firstArgument;
         }
 
         public void Clean()

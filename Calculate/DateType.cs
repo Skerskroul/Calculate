@@ -1,6 +1,6 @@
 ﻿namespace Calculate
 {
-    struct Number
+    class Number
     {
         private string first;
         private string point;
