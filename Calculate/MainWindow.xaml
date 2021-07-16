@@ -10,22 +10,22 @@
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
-    
+
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="20" VerticalAlignment="Top">
-            <MenuItem Header="Вид">
-                <MenuItem Header="Обычний"></MenuItem>
-                <MenuItem Header="Инженерный"></MenuItem>
-                <MenuItem Header="Программист"></MenuItem>
-                <MenuItem Header="Статистика"></MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Normal"></MenuItem>
+                <MenuItem Header="Engineering"></MenuItem>
+                <MenuItem Header="Programmer"></MenuItem>
+                <MenuItem Header="Statistic"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Правка">
-                <MenuItem Header="Копировать"></MenuItem>
-                <MenuItem Header="Вставить"></MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"></MenuItem>
+                <MenuItem Header="Paste"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Справка">
-                <MenuItem Header="Просмотреть справку"></MenuItem>
-                <MenuItem Header="О програме"></MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Show help"></MenuItem>
+                <MenuItem Header="About program"></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -42,11 +42,11 @@
             <TextBox x:Name="textBox" Grid.ColumnSpan="2" Margin="10 10 10 10" Width="171" HorizontalAlignment="Left" Text="{Binding Result}"></TextBox>
 
             <Canvas Grid.Row="1">
-                <Button x:Name="memoryClear" Content="MC" Margin="10 0 0 10" Canvas.Top="10" Height="25" Width="30" Command ="{Binding }"  CommandParameter="MC"></Button>
-                <Button x:Name="memoryRead" Content="MR" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="35" Height="25" Width="30" Command="{Binding }" CommandParameter="MR"></Button>
-                <Button x:Name="memorySave" Content="MS" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="70" Height="25" Width="30" Command="{Binding }" CommandParameter="MS"></Button>
-                <Button x:Name="memoryAdd" Content="M+" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="105" Height="25" Width="30" Command="{Binding }" CommandParameter="M+"></Button>
-                <Button x:Name="memoryDifference" Content="M-" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="140" Height="25" Width="30" Command="{Binding }" CommandParameter="M-"></Button>
+                <Button x:Name="memoryClear" Content="MC" Margin="10 0 0 10" Canvas.Top="10" Height="25" Width="30" Command ="{Binding ClickButton}"  CommandParameter="MC"></Button>
+                <Button x:Name="memoryRead" Content="MR" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="35" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="MR"></Button>
+                <Button x:Name="memorySave" Content="MS" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="70" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="MS"></Button>
+                <Button x:Name="memoryAdd" Content="M+" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="105" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="M+"></Button>
+                <Button x:Name="memoryDifference" Content="M-" Margin="10 0 0 10" Canvas.Top="10" Canvas.Left="140" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="M-"></Button>
 
                 <Button x:Name="backspace" Content="back" Margin="10 0 0 10" Canvas.Top="40" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="back"></Button>
                 <Button x:Name="clearLast" Content="CE" Margin="10 0 0 10" Canvas.Top="40" Canvas.Left="35" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="CE"></Button>
@@ -76,7 +76,7 @@
                 <Button x:Name="point" Content="," Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="70" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter=","></Button>
                 <Button x:Name="plus" Content="+" Margin="10 0 0 10" Canvas.Top="160" Canvas.Left="105" Height="25" Width="30" Command="{Binding ClickButton}" CommandParameter="+"></Button>
             </Canvas>
-            
+
         </Grid>
     </DockPanel>
 </Window>

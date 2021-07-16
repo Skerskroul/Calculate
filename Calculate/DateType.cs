@@ -33,8 +33,7 @@
 
         public void Clear()
         {
-            number = first = "";
-            second = point = "";
+            number = first = second = point = "";
         }
 
         public bool ResetSign()
@@ -50,9 +49,49 @@
             return true;
         }
 
+        public void ClearLastSign()
+        {
+            if (second != "")
+            {
+                second = Erase(second);
+                if(second == "")
+                    point = "";
+            }
+            else if (first != "")
+                first = Erase(first);
+            number = first + point + second;
+        }
+
+        private string Erase(string str)
+        {
+            int size = str.Length - 1;
+
+            string result = "";
+
+            for (int i = 0; i < size; i++)
+                result += str[i];
+            return result;
+        }
+
         public override string ToString()
         {
             return number;
         }
     }
+
+    class Buffer
+    {
+        public string buff = "0";
+
+        public void MemorySave(string number) => buff = number;
+
+        public string MemoryRead { get { return buff; } }
+
+        public void MemoryAdd(string number) => buff = (double.Parse(buff) + double.Parse(number)).ToString();
+
+        public void MemorySubstract(string number) => buff = (double.Parse(buff) - double.Parse(number)).ToString();
+
+        public void MemoryClear() => buff = "0";
+    }
+
 }

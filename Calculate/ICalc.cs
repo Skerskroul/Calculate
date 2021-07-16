@@ -22,6 +22,7 @@ namespace Calculate
     }
 
 
+
     class AddCalc : ICalcBinary
     {
         public double Calc(double first, double second)
@@ -56,8 +57,6 @@ namespace Calculate
 
 
 
-
-
     class SQRTCalc : ICalcUnary
     {
         public double Calc(double first)
@@ -81,7 +80,6 @@ namespace Calculate
             return -first;
         }
     }
-
 
 
 

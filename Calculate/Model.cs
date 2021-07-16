@@ -9,25 +9,33 @@
         private Number firstArgument;
         private string operation;
         private Number secondArgument;
+        private Buffer buffer;
 
         public Model()
         {
             firstArgument = new Number();
             secondArgument = new Number();
+            buffer = new Buffer();
+
             firstArgument.Clear();
             secondArgument.Clear();
+            buffer.MemoryClear();
             operation = "";
         }
-        /// <summary>
-        /// UA. Mетод для коректного парсингу даних. Проблема функція бере багато на себе обов'язків
-        /// ENG. This function use for correct parse date. Main problem: this function take a lot responsibility
-        /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
-        public string DoSomething(string symbol)
+
+        public string TakeArgument(string symbol)
         {
-            if (!ParseNumber(symbol))
-                ParseOperation(symbol);
+            bool work = false;
+
+            if (!work)
+                work = ParseNumber(symbol);
+            if (!work)
+                work = CleanOperation(symbol);
+            if(!work)
+                work = MemoryOperation(symbol);
+            if (!work)
+                work = ParseOperation(symbol);
+            
 
             return CreateResult();
         }
@@ -41,22 +49,17 @@
             return false;
         }
 
-        private void ParseOperation(string symbol)
+        private bool ParseOperation(string symbol)
         {
             if (UnaryCalculate(symbol))//+/-, kor, 1/x
-                return;
+                return true;
             else if (UnaryCalculateWithTwoArgument(symbol))//%
-                return;
-            else if (CalculateBinaryOperation(symbol))
-                return;
-            
+                return true;
+            else if (BinaryOperation(symbol))
+                return true;
+            return false;
         }
 
-        /// <summary>
-        /// UA. Створює рядок який повертаеться, як аргумент за посиланням
-        /// ENG. Create string which return as an arguments to the link
-        /// </summary>
-        /// <param name="result"></param>
         private string CreateResult()
         {
             string result;
@@ -68,10 +71,7 @@
 
             return result;
         }
-        /// <summary>
-        /// UA. Проводить розрахунки в залежності від знаку 
-        /// ENG. Do calculate. Information comments from Junior ;D
-        /// </summary>
+
         private bool BinaryCalculate()
         {
             ListBinaryOperation listBinaryOperation = new ListBinaryOperation();
@@ -130,7 +130,7 @@
             return false;
         }
 
-        private bool CalculateBinaryOperation(string symbol)
+        private bool BinaryOperation(string symbol)
         {
             bool result = false;
 
@@ -154,9 +154,64 @@
                 return firstArgument;
         }
 
-        public void Clean()
+        public bool CleanOperation(string symbol)//CE, C, back
         {
+            if(symbol == "C")
+            {
+                ClearAll();
+                return true;
+            }
+            else if(symbol == "CE")
+            {
+                WhatOperand().Clear();
+                return true;
+            }
+            else if(symbol == "back")
+            {
+                WhatOperand().ClearLastSign();
+                return true;
+            }
+            return false;
+        }
 
+        private void ClearAll()
+        {
+            firstArgument.Clear();
+            secondArgument.Clear();
+            operation = "";
+        }
+
+        private bool MemoryOperation(string symbol)//MC, MS, MR, M+, M-
+        {
+            if (symbol == "MC")
+            {
+                buffer.MemoryClear();
+                return true;
+            }
+            else if (symbol == "MS")
+            {
+                buffer.MemorySave(WhatOperand().ToString());
+                return true;
+            }
+            else if (symbol == "MR")
+            {
+                if (secondArgument.ToString() == "")
+                    secondArgument.SetNumber(buffer.MemoryRead);
+                else
+                    firstArgument.SetNumber(buffer.MemoryRead);
+                return true;
+            }
+            else if (symbol == "M+")
+            {
+                buffer.MemoryAdd(WhatOperand().ToString());
+                return true;
+            }
+            else if (symbol == "M-")
+            {
+                buffer.MemorySubstract(WhatOperand().ToString());
+                return true;
+            }
+            return false;
         }
     }
 }
