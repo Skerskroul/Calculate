@@ -22,6 +22,7 @@ In future this struct modificate if need it.
 14.07.2021 OMG. I remaked project struct. I watched a lot of video. And some(body;) video helpful, but i still did not understand.
            Finally i do this. Good "bad" commit.
            
+15.07.2021 Commit stable version. Version can counted with operation + - * /. And can calc float number.
            
            
 P.S. Sorry for my english.
